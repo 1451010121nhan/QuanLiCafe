@@ -1,0 +1,358 @@
+CREATE DATABASE QuanLyQuanCafe
+GO
+
+--Food
+--Table
+--FoodCategory
+--Account
+--Bill
+--BillInfo
+use QuanLyQuanCafe
+GO
+
+CREATE TABLE TableFood
+(
+	id int Identity Primary key,
+	name nvarchar(100) not null Default N'Bàn chưa có tên',
+	status nvarchar(100) not null Default N'trống' --trống||có người
+	
+)
+GO
+
+CREATE TABLE Account
+(
+	UserName nvarchar(100) primary key,
+	DisplayName nvarchar(100) not null Default N'ou',
+	PassWord nvarchar(100) not null Default 0,
+	Type int not null Default 0 --1:Admin||0:Staff
+)
+GO
+
+CREATE TABLE FoodCategory
+(
+	id int Identity Primary key,
+	name nvarchar(100) not null Default N'Chưa đặt tên'
+)
+GO
+
+CREATE TABLE Food
+(
+	id int Identity Primary key,
+	name nvarchar(100) not null Default N'Chưa đặt tên',
+	idCategory int not null,
+	price float not null Default 0
+	
+	Foreign key(idCategory) references dbo.FoodCategory(id)
+)
+go
+
+CREATE TABLE Bill
+(
+	id int Identity Primary key,
+	DateCheckIn Date not null Default getDate(),
+	DateCheckOut Date,
+	idTable int not null,
+	status int not null Default 0 --1:Đã thanh toán||0:Chưa
+	
+	Foreign key(idTable) references dbo.TableFood(id)
+)
+go
+
+CREATE TABLE BillInfo
+(
+	id int Identity Primary key,
+	idBill int not null,
+	idFood int not null,
+	count int not null Default 0
+	
+	Foreign key(idBill) references dbo.Bill(id),
+	Foreign key(idFood) references dbo.Food(id)
+)
+go
+
+INSERT INTO dbo.Account
+( UserName,
+DisplayName,
+PassWord,
+Type
+)
+VALUES (N'N9', N'NhanN9', N'1',1) 
+
+INSERT INTO dbo.Account
+( UserName,
+DisplayName,
+PassWord,
+Type
+)
+VALUES (N'NV', N'NhanVien', N'1',1) 
+
+go
+
+SELECT *FROM dbo.Account
+go
+
+CREATE PROC USP_GetLAccountByUserName
+	@UserName nvarchar(100)
+AS
+BEGIN
+	SELECT * FROM dbo.Account WHERE UserName =@UserName 
+
+END
+GO
+
+EXEC USP_GetLAccountByUserName @UserName =N'N9'
+GO
+ 
+SELECT COUNT(*) FROM Account WHERE UserName =N'N9' AND PassWord =N'1'
+
+GO
+
+--Khac che loi SQL Projection
+CREATE PROC USP_Login
+	@userName nvarchar(100), @passWord nvarchar(100)
+AS
+BEGIN
+	SELECT *FROM Account WHERE UserName = @userName AND PassWord = @passWord
+
+END
+GO	
+ 	
+--Them ban an
+DECLARE @i INT = 0
+WHILE @i <= 10
+BEGIN
+	INSERT TableFood(name) VALUES(N'Bàn ' + CAST(@i AS nvarchar(100)))
+	SET @i = @i +1
+END
+go
+SELECT * FROM TableFood
+
+GO
+
+
+CREATE PROC USP_GetTableList
+AS SELECT * FROM TableFood
+GO
+
+EXEC USP_GetTableList	
+GO
+
+UPDATE TableFood SET status =N'Có người' WHERE id = 9
+
+--them Category
+INSERT FoodCategory
+	(name)
+VALUES (N'Hải sản')
+INSERT FoodCategory
+	(name)
+VALUES (N'Nông sản')
+INSERT FoodCategory
+	(name)
+VALUES (N'Lâm sản')
+INSERT FoodCategory
+	(name)
+VALUES (N'Sản sản')
+INSERT FoodCategory
+	(name)
+VALUES (N'Nước')
+
+-- thêm món ăn
+INSERT Food
+	(name, idCategory, price)
+VALUES (N'Mực một nắng nướng sa tế',
+		1,
+		120000)
+		INSERT Food
+	(name, idCategory, price)
+VALUES (N'Nghêu hấp xả',
+		1,
+		50000)
+INSERT Food
+	(name, idCategory, price)
+VALUES (N'Dú dê nướng sữa',
+		2,
+		90000)
+INSERT Food
+	(name, idCategory, price)
+VALUES (N'Heo rừng nướng muối ớt',
+		3,
+		75000)
+INSERT Food
+	(name, idCategory, price)
+VALUES (N'Cơm chiên dương châu',
+		4,
+		50000)
+INSERT Food
+	(name, idCategory, price)
+VALUES (N'7Up',
+		1,
+		12000)
+INSERT Food
+	(name, idCategory, price)
+VALUES (N'Cafe',
+		1,
+		10000)
+		
+--thêm Bill
+INSERT Bill
+	(DateCheckIn,
+	DateCheckOut,
+	idTable,
+	status)
+VALUES(GETDATE(),
+		NULL,
+		1,
+		0
+		)
+INSERT Bill
+	(DateCheckIn,
+	DateCheckOut,
+	idTable,
+	status)
+VALUES(GETDATE(),
+		NULL,
+		2,
+		0
+		)	
+INSERT Bill
+	(DateCheckIn,
+	DateCheckOut,
+	idTable,
+	status)
+VALUES(GETDATE(),
+		GETDATE(),
+		2,
+		1
+		)
+	
+--Thêm Bill Info
+INSERT BillInfo
+	(idBill, idFood, count)
+VALUES (1,
+		1,
+		2
+		)
+INSERT BillInfo
+	(idBill, idFood, count)
+VALUES (1,
+		3,
+		4
+		)	
+INSERT BillInfo
+	(idBill, idFood, count)
+VALUES (1,
+		5,
+		1
+		)
+INSERT BillInfo
+	(idBill, idFood, count)
+VALUES (2,
+		1,
+		2
+		)
+INSERT BillInfo
+	(idBill, idFood, count)
+VALUES (2,
+		6,
+		2
+		)
+INSERT BillInfo
+	(idBill, idFood, count)
+VALUES (3,
+		5,
+		2
+		)
+GO
+
+SELECT f.name, bi.count, f.price, f.price*bi.count AS totalPrice  FROM BillInfo AS bi, Bill AS b, Food AS f
+WHERE bi.idBill = b.id AND bi.idFood = f.id AND b.idTable = 2
+ 
+
+
+SELECT * FROM Bill
+SELECT * FROM BillInfo
+SELECT * FROM Food
+SELECT * FROM FoodCategory
+go
+--them Bill
+CREATE PROC USP_InsertBill
+@idTable INT
+AS
+BEGIN
+	INSERT Bill(DateCheckIn, DateCheckOut, idTable, status)
+	VALUES (GETDATE(), NULL, @idTable, 0)
+END
+GO
+
+--them thong tin Bill
+CREATE PROC USP_InsertBillInfo
+@idBill INT, @idFood INT, @count INT
+AS
+BEGIN
+	DECLARE @isExitsBillInfo INT
+	DECLARE @foodCount INT = 1
+	
+	SELECT @isExitsBillInfo = id, @foodCount = b.count
+	FROM BillInfo AS b
+	WHERE idBill = @idBill AND idFood = @idFood
+	IF (@isExitsBillInfo > 0)
+	BEGIN
+		DECLARE @newCount INT = @foodCount + @count
+		IF(@newCount > 0)
+			UPDATE BillInfo 
+			SET count = @foodCount + @count WHERE idBill= @idBill AND idFood = @idFood
+		ELSE
+			DELETE BillInfo WHERE idBill = @idBill AND idFood = @idFood
+	END
+	ELSE
+	BEGIN
+		INSERT BillInfo (idBill, idFood, count)
+		VALUES (@idBill, @idFood, @count)
+	END
+END
+GO
+
+SELECT MAX(id) FROM Bill
+
+UPDATE dbo.Bill SET status = 1 WHERE id=1
+
+DELETE BillInfo
+DELETE Bill
+
+CREATE TRIGGER UTG_UpdateBillInfo
+ON BillInfo FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @idBill INT
+	
+	SELECT @idBill = idBill  FROM Inserted
+	
+	DECLARE @idTable INT
+	
+	SELECT @idTable = idTable FROM Bill WHERE id = @idBill AND status = 0
+	
+	UPDATE TableFood SET status =N'Có người' WHERE id = @idTable
+END
+GO
+
+CREATE TRIGGER UTG_UpdateBill
+ON Bill FOR UPDATE
+AS 
+BEGIN
+	DECLARE @idBill INT
+	
+	SELECT @idBill = id FROM Inserted
+	
+	DECLARE @idTable INT
+	
+	SELECT @idTable = idTable FROM Bill WHERE id = @idBill
+	
+	DECLARE @count INT = 0
+	
+	SELECT @count = COUNT(*) FROM Bill WHERE idTable = @idTable AND status = 0
+	
+	IF(@count = 0)
+		UPDATE TableFood SET status = N'Trống' WHERE id = @idTable
+	
+END
+GO
