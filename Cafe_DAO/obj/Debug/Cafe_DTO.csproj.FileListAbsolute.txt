@@ -1,0 +1,5 @@
+D:\QuanLyQuanCafe\Bin\Cafe_DTO.dll
+D:\QuanLyQuanCafe\Bin\Cafe_DTO.pdb
+D:\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DTO.csprojResolveAssemblyReference.cache
+D:\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DTO.dll
+D:\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DTO.pdb

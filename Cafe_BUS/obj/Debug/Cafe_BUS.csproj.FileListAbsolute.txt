@@ -1,0 +1,15 @@
+D:\QuanLyQuanCafe\Bin\Cafe_BUS.dll
+D:\QuanLyQuanCafe\Bin\Cafe_BUS.pdb
+D:\QuanLyQuanCafe\Cafe_BUS\obj\Debug\Cafe_BUS.csprojResolveAssemblyReference.cache
+D:\QuanLyQuanCafe\Cafe_BUS\obj\Debug\Cafe_BUS.dll
+D:\QuanLyQuanCafe\Cafe_BUS\obj\Debug\Cafe_BUS.pdb
+C:\QuanLyQuanCafe\Bin\Cafe_BUS.dll
+C:\QuanLyQuanCafe\Bin\Cafe_BUS.pdb
+C:\QuanLyQuanCafe\Cafe_BUS\obj\Debug\Cafe_BUS.csprojResolveAssemblyReference.cache
+C:\QuanLyQuanCafe\Cafe_BUS\obj\Debug\Cafe_BUS.dll
+C:\QuanLyQuanCafe\Cafe_BUS\obj\Debug\Cafe_BUS.pdb
+D:\sach Mobi\QuanLyQuanCafe\Bin\Cafe_BUS.dll
+D:\sach Mobi\QuanLyQuanCafe\Bin\Cafe_BUS.pdb
+D:\sach Mobi\QuanLyQuanCafe\Cafe_BUS\obj\Debug\Cafe_BUS.csprojResolveAssemblyReference.cache
+D:\sach Mobi\QuanLyQuanCafe\Cafe_BUS\obj\Debug\Cafe_BUS.dll
+D:\sach Mobi\QuanLyQuanCafe\Cafe_BUS\obj\Debug\Cafe_BUS.pdb
