@@ -1,0 +1,18 @@
+D:\QuanLyQuanCafe\Bin\Cafe_DTO.dll
+D:\QuanLyQuanCafe\Bin\Cafe_DTO.pdb
+D:\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DAO.csprojResolveAssemblyReference.cache
+D:\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DTO.dll
+D:\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DTO.pdb
+C:\QuanLyQuanCafe\Bin\Cafe_DTO.dll
+C:\QuanLyQuanCafe\Bin\Cafe_DTO.pdb
+C:\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DAO.csprojResolveAssemblyReference.cache
+C:\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DTO.dll
+C:\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DTO.pdb
+D:\sach Mobi\QuanLyQuanCafe\Bin\Cafe_DTO.dll
+D:\sach Mobi\QuanLyQuanCafe\Bin\Cafe_DTO.pdb
+D:\sach Mobi\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DAO.csprojResolveAssemblyReference.cache
+D:\sach Mobi\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DTO.dll
+D:\sach Mobi\QuanLyQuanCafe\Cafe_DTO\obj\Debug\Cafe_DTO.pdb
+D:\sach Mobi\QuanLyQuanCafe\Cafe_DAO\obj\Debug\Cafe_DAO.csprojResolveAssemblyReference.cache
+D:\sach Mobi\QuanLyQuanCafe\Cafe_DAO\obj\Debug\Cafe_DTO.dll
+D:\sach Mobi\QuanLyQuanCafe\Cafe_DAO\obj\Debug\Cafe_DTO.pdb

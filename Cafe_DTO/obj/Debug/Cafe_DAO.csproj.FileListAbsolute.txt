@@ -1,6 +1,0 @@
-D:\QuanLyQuanCafe\Bin\Cafe_DAO.dll
-D:\QuanLyQuanCafe\Bin\Cafe_DAO.pdb
-D:\QuanLyQuanCafe\Cafe_DAO\obj\Debug\Cafe_DAO.csprojResolveAssemblyReference.cache
-D:\QuanLyQuanCafe\Cafe_DAO\obj\Debug\Cafe_DAO.dll
-D:\QuanLyQuanCafe\Cafe_DAO\obj\Debug\Cafe_DAO.pdb
-D:\QuanLyQuanCafe\Bin\Cafe_DAO.dll.config
